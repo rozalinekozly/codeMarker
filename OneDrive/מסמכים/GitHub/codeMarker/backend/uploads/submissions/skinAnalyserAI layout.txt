@@ -1,0 +1,34 @@
+project/
+├── app.py          # Flask application (Backend)
+├── skin_model.h5   # Trained model (Machine Learning Model)
+├── client/         # React frontend (New folder for React app)
+│   ├── public/     # Contains the HTML entry point for React
+│   │   └── index.html
+│   ├── src/        # Contains React components and logic
+│   │   ├── App.js  # Main React component
+│   │   ├── index.js  # React entry point
+│   │   └── styles/  # Optional folder for CSS files
+│   │       └── styles.css
+│   └── package.json # React dependencies and scripts
+└── uploads/        # Directory to save uploaded images (used by Flask backend)
+
+
+project/
+├── app.py          # Flask application (Backend)
+├── skin_model.h5   # Trained model for detailed analysis (Detection/Segmentation)
+├── client/         # React frontend (For user interaction)
+│   ├── public/     # Contains the HTML entry point for React
+│   │   └── index.html
+│   ├── src/        # Contains React components and logic
+│   │   ├── App.js  # Main React component
+│   │   ├── index.js  # React entry point
+│   │   ├── components/  # Reusable React components
+│   │   │   ├── UploadForm.js  # File upload form
+│   │   │   ├── ResultsDisplay.js  # Component to show detailed analysis
+│   │   └── styles/
+│   │       └── styles.css  # Styling for React components
+│   └── package.json # React dependencies and scripts
+├── uploads/        # Directory to save uploaded images (used by Flask backend)
+├── detection_model.pt  # YOLO or other object detection model (Optional)
+├── segmentation_model.h5  # UNet or Mask R-CNN model (Optional)
+└── requirements.txt  # Python dependencies for Flask, TensorFlow, OpenCV, etc.

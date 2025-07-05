@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CodeMarker - HW Auto Grader</title>
+</head>
+<body>
+    <h2>CodeMarker - HW Auto Grader</h2>
+    <form id="upload-form" enctype="multipart/form-data">
+        <label>Upload Submissions:</label>
+        <input type="file" name="submissions" multiple><br><br>
+        <label>Upload Test Inputs:</label>
+        <input type="file" name="inputs" multiple><br><br>
+        <label>Upload Expected Outputs:</label>
+        <input type="file" name="expected_outputs" multiple><br><br>
+        <label>Select Language:</label>
+        <select name="language">
+            <option value="c">C</option>
+            <option value="cpp">C++</option>
+            <option value="python">Python</option>
+            <option value="java">Java</option>
+        </select><br><br>
+        <button type="submit">Run Grading</button>
+    </form>
+    <div id="status"></div>
+
+    <script>
+        const form = document.getElementById('upload-form');
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const formData = new FormData(form);
+            document.getElementById('status').innerText = "Processing, please wait...";
+            const response = await fetch('http://127.0.0.1:8000/upload', {
+                method: 'POST',
+                body: formData
+            });
+            const data = await response.json();
+            document.getElementById('status').innerHTML = `Done. <a href="${data.report_url}">Download Excel Report</a>`;
+        });
+    </script>
+</body>
+</html>
